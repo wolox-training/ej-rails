@@ -62,5 +62,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# Flexible authentication solution for Rails with Warden
-gem 'devise', '~> 4.4', '>= 4.4.3'
+# A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+# Simple, multi-client and secure token-based authentication for Rails.
+gem 'devise_token_auth'
