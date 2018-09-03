@@ -41,6 +41,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Ruby static code analyzer and code formatter
   gem 'rubocop', '~> 0.58.2'
+  # rspec-rails is a testing framework for Rails 3.x, 4.x and 5.x.
+  gem 'rspec-rails', '~> 3.7'
+  # Factory_bot provides a framework and DSL for defining and using factories - 
+  # less error-prone, more explicit, and all-around easier to work with than fixtures.
+  gem 'factory_bot'
 end
 
 group :development do
@@ -58,6 +63,13 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # A set of strategies for cleaning your database in Ruby to ensure a clean state during tests
+  gem 'database_cleaner'
+  # This gem is a port of Perl's Data::Faker library that generates fake data.
+  gem 'faker'
+  # Provides RSpec- and Minitest-compatible one-liners that test common Rails functionality. 
+  # These tests would otherwise be much longer, more complex, and error-prone.
+  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
