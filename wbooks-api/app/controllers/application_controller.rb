@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
 
   include DeviseTokenAuth::Concerns::SetUserByToken
   respond_to :json
+
+  before_action :authenticate_user!
+  # rubocop:disable Rails/LexicallyScopedActionFilter
+  skip_before_action :authenticate_user!, only: [:create]
 end

@@ -78,3 +78,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'omniauth', '~> 1.8', '>= 1.8.1'
 # Simple, multi-client and secure token-based authentication for Rails.
 gem 'devise_token_auth'
+# Wor::Paginate is a gem for Rails that simplifies pagination, particularly for controller methods, while standardizing JSON output for APIs.
+gem 'wor-paginate'
+# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
+gem 'active_model_serializers', '~> 0.10.7'
