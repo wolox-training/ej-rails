@@ -7,5 +7,4 @@ class BookIndexSerializer < BookSerializer
       url: object.image
     }
   end
-
 end
