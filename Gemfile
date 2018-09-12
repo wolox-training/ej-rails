@@ -42,7 +42,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Ruby static code analyzer and code formatter
-  gem 'rubocop', '~> 0.58.2'
+  gem 'rubocop', '~> 0.52.0'
   # rspec-rails is a testing framework for Rails 3.x, 4.x and 5.x.
   gem 'rspec-rails', '~> 3.7'
   # Factory_bot provides a framework and DSL for defining and using factories -
