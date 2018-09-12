@@ -6,10 +6,7 @@ class ApplicationController < ActionController::Base
 
   include DeviseTokenAuth::Concerns::SetUserByToken
   respond_to :json
-
   before_action :authenticate_user!
-  # rubocop:disable Rails/LexicallyScopedActionFilter
-  skip_before_action :authenticate_user!, only: [:create]
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
