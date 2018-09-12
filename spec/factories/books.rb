@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :book do
     genre     { Faker::Book.genre }
@@ -5,6 +7,6 @@ FactoryBot.define do
     image     { Faker::Internet.url }
     title     { Faker::Book.title }
     publisher { Faker::Book.publisher }
-    year      { Faker::Date.backward().year }
+    year      { Faker::Date.backward.year }
   end
 end

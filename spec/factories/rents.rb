@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :rent do
     loan            { Faker::Date.backward(5) }

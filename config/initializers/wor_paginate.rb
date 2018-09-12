@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Wor::Paginate.configure do |config|
   config.default_per_page = 25
   # config.default_page = 1

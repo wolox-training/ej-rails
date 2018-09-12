@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -15,17 +17,17 @@ require 'faker'
     image:     Faker::Internet.url,
     title:     Faker::Book.title,
     publisher: Faker::Book.publisher,
-    year:      Faker::Date.backward().year,
+    year:      Faker::Date.backward.year
   )
 end
 
 user = User.create!(
-        email: "test@mail.com",
-        password: "password",
-        password_confirmation: "password",
-        first_name: "Test",
-        last_name: "Test"
-      )
+  email: 'test@mail.com',
+  password: 'password',
+  password_confirmation: 'password',
+  first_name: 'Test',
+  last_name: 'Test'
+)
 
 books = Book.all
 

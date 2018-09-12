@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -38,20 +40,20 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Ruby static code analyzer and code formatter
   gem 'rubocop', '~> 0.58.2'
   # rspec-rails is a testing framework for Rails 3.x, 4.x and 5.x.
   gem 'rspec-rails', '~> 3.7'
-  # Factory_bot provides a framework and DSL for defining and using factories - 
+  # Factory_bot provides a framework and DSL for defining and using factories -
   # less error-prone, more explicit, and all-around easier to work with than fixtures.
   gem 'factory_bot'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -67,13 +69,13 @@ group :test do
   gem 'database_cleaner'
   # This gem is a port of Perl's Data::Faker library that generates fake data.
   gem 'faker'
-  # Provides RSpec- and Minitest-compatible one-liners that test common Rails functionality. 
+  # Provides RSpec- and Minitest-compatible one-liners that test common Rails functionality.
   # These tests would otherwise be much longer, more complex, and error-prone.
   gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # A generalized Rack framework for multiple-provider authentication.
 gem 'omniauth', '~> 1.8', '>= 1.8.1'
 # Simple, multi-client and secure token-based authentication for Rails.
