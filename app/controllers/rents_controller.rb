@@ -6,7 +6,7 @@ class RentsController < ApplicationController
     rent = book.rents.new(rent_params)
 
     if rent.save
-      render json: rent, status: :created
+      render json: rent, status: :created, serializer: RentSerializer
     else
       render json: {error: rent.errors}, status: :bad_request
     end

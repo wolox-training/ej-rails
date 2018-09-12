@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-
   def index
     render_paginated Book, each_serializer: BookIndexSerializer
   end
