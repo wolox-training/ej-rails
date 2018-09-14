@@ -6,17 +6,39 @@ RSpec.describe RentsController do
   include_context 'Authenticated User'
 
   describe 'GET #create' do
-    context 'When creating a rent for a book' do
-      let!(:book_rent) do
-        attributes_for(:rent)
-      end
+    context 'When creating a rent for an user' do
+      let!(:user) { create(:user) }
+      let!(:book) { create(:book) }
+      let!(:rent) { attributes_for(:rent, book_id: book.id) }
       before do
-        byebug
-        get :create, params: book_rent
+        post :create, params: { user_id: user.id, rent: rent }
       end
-      
+
       it 'returns http success' do
         expect(response).to have_http_status(:success)
+      end
+
+      it 'responds with the created rent' do
+        expect(response_body).to have_key('loan')
+        expect(response_body).to have_key('restitution')
+        expect(response_body).to have_key('user')
+        expect(response_body).to have_key('book')
+      end
+    end
+
+    context 'When given a non existent user ID' do
+      let!(:book) { create(:book) }
+      let!(:rent) { attributes_for(:rent, book_id: book.id) }
+      before do
+        post :create, params: { user_id: 1, rent: rent }
+      end
+
+      it 'returns http status 404' do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it 'responds with an error message' do
+        expect(response_body).to have_key('error')
       end
     end
   end

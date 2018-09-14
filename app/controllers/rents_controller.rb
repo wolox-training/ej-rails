@@ -2,8 +2,8 @@
 
 class RentsController < ApplicationController
   def create
-    param = which_param(params)
-    rent = param.rents.new(rent_params)
+    user = User.find(params[:user_id])
+    rent = user.rents.new(rent_params)
 
     if rent.save
       render json: rent, status: :created, serializer: RentSerializer
@@ -28,13 +28,5 @@ class RentsController < ApplicationController
 
   def rent_params
     params.require(:rent).permit(:loan, :restitution, :user_id, :book_id)
-  end
-
-  def which_param(params)
-    if params['book_id']
-      Book.find(params[:book_id])
-    elsif params['user_id']
-      User.find(params[:user_id])
-    end
   end
 end
