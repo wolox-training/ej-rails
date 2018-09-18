@@ -5,23 +5,18 @@ class RentsController < ApplicationController
     user = User.find(params[:user_id])
     rent = user.rents.new(rent_params)
 
-    if rent.save
-      render json: rent, status: :created, serializer: RentSerializer
-    else
-      render json: { error: rent.errors }, status: :bad_request
-    end
+    return render json: { error: rent.errors }, status: :bad_request unless rent.save
+    render json: { message: 'Rent succesfully created!' }, status: :created
   end
 
   def index
     if params['book_id']
-      book_id = Book.find(params[:book_id])
-      rents = Rent.where(book_id: book_id)
+      rents = Book.find(params[:book_id]).rents
     elsif params['user_id']
-      user_id = User.find(params[:user_id])
-      rents = Rent.where(user_id: user_id)
+      rents = User.find(params[:user_id]).rents
     end
 
-    render_paginated rents, each_serializer: RentSerializer
+    render_paginated rents
   end
 
   private

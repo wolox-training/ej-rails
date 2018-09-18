@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
   respond_to :json
   before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: :create
 
   include Wor::Paginate
 
@@ -20,4 +21,6 @@ class ApplicationController < ActionController::Base
   def render_not_found_response(exception)
     render json: { error: exception.message }, status: :not_found
   end
+
+  def create; end
 end

@@ -7,30 +7,23 @@ RSpec.describe RentsController do
 
   describe 'GET #create' do
     context 'When creating a rent for an user' do
-      let!(:user) { create(:user) }
-      let!(:book) { create(:book) }
-      let!(:rent) { attributes_for(:rent, book_id: book.id) }
+      let(:user) { create(:user) }
+      let(:book) { create(:book) }
+      let(:rent) { attributes_for(:rent, book_id: book.id) }
       before do
         post :create, params: { user_id: user.id, rent: rent }
       end
 
-      it 'returns http success' do
-        expect(response).to have_http_status(:success)
-      end
-
-      it 'responds with the created rent' do
-        expect(response_body).to have_key('loan')
-        expect(response_body).to have_key('restitution')
-        expect(response_body).to have_key('user')
-        expect(response_body).to have_key('book')
+      it 'returns http status created' do
+        expect(response).to have_http_status(:created)
       end
     end
 
     context 'When given a non existent user ID' do
-      let!(:book) { create(:book) }
-      let!(:rent) { attributes_for(:rent, book_id: book.id) }
+      let(:book) { create(:book) }
+      let(:rent) { attributes_for(:rent, book_id: book.id) }
       before do
-        post :create, params: { user_id: 1, rent: rent }
+        post :create, params: { user_id: User.last.id + 1, rent: rent }
       end
 
       it 'returns http status 404' do
@@ -41,11 +34,23 @@ RSpec.describe RentsController do
         expect(response_body).to have_key('error')
       end
     end
+
+    context 'When there is a missing param' do
+      let(:user) { create(:user) }
+      let(:rent) { attributes_for(:rent) }
+      before do
+        post :create, params: { user_id: user.id, rent: rent }
+      end
+
+      it 'returns http status 400' do
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
   end
 
   describe 'GET #index' do
     context 'When fetching all the rents of a book' do
-      let!(:book) { create(:book) }
+      let(:book) { create(:book) }
       let!(:rents) do
         today = Time.zone.today
         (1..5).map do |num|
@@ -74,7 +79,7 @@ RSpec.describe RentsController do
     end
 
     context 'When fetching all the rents of an user' do
-      let!(:user) { create(:user) }
+      let(:user) { create(:user) }
       let!(:rents) do
         today = Time.zone.today
         (1..5).map do |num|
@@ -103,7 +108,7 @@ RSpec.describe RentsController do
     end
 
     context 'When given a limit of records expected' do
-      let!(:book) { create(:book) }
+      let(:book) { create(:book) }
       let!(:rents) do
         today = Time.zone.today
         (1..5).map do |num|
