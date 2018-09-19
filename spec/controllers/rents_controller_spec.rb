@@ -37,13 +37,39 @@ RSpec.describe RentsController do
 
     context 'When there is a missing param' do
       let(:user) { create(:user) }
-      let(:rent) { attributes_for(:rent) }
-      before do
-        post :create, params: { user_id: user.id, rent: rent }
+      context 'When the book_id is missing' do
+        let(:rent) { attributes_for(:rent) }
+        before do
+          post :create, params: { user_id: user.id, rent: rent }
+        end
+
+        it 'returns http status 400' do
+          expect(response).to have_http_status(:bad_request)
+        end
       end
 
-      it 'returns http status 400' do
-        expect(response).to have_http_status(:bad_request)
+      context 'When the loan is missing' do
+        let(:book) { create(:book) }
+        let(:rent) { attributes_for(:rent, loan: nil) }
+        before do
+          post :create, params: { user_id: user.id, book_id: book.id, rent: rent }
+        end
+
+        it 'returns http status 400' do
+          expect(response).to have_http_status(:bad_request)
+        end
+      end
+
+      context 'When the restitution is missing' do
+        let(:book) { create(:book) }
+        let(:rent) { attributes_for(:rent, restitution: nil) }
+        before do
+          post :create, params: { user_id: user.id, book_id: book.id, rent: rent }
+        end
+
+        it 'returns http status 400' do
+          expect(response).to have_http_status(:bad_request)
+        end
       end
     end
   end
