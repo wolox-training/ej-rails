@@ -21,6 +21,7 @@ class Rent < ApplicationRecord
 
   def loan_cannot_be_greater_than_restitution_date
     return true if loan.blank?
-    errors.add(:loan, "can't be greater than restitution date") if restitution && loan > restitution
+    errors.add(:loan, "can't be greater than restitution date") if  restitution &&
+                                                                    loan > restitution
   end
 end
