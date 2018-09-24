@@ -3,9 +3,10 @@
 class RentsController < ApplicationController
   def create
     user = User.find(params[:user_id])
-    rent = user.rents.new(rent_params)
+    @rent = user.rents.new(rent_params)
 
-    return render json: { error: rent.errors }, status: :bad_request unless rent.save
+    return render json: { error: @rent.errors }, status: :bad_request unless @rent.save
+    RentMailer.new_rent_notification(@rent).deliver_later
     render json: { message: 'Rent succesfully created!' }, status: :created
   end
 

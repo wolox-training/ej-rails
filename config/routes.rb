@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :rents, only: %i[index]
   end
 
-  resources :users, only: %i[index show] do
+  resources :users, only: %i[index show create] do
     resources :rents, only: %i[index create]
   end
 end

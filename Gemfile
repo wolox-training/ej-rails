@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -48,6 +48,10 @@ group :development, :test do
   # Factory_bot provides a framework and DSL for defining and using factories -
   # less error-prone, more explicit, and all-around easier to work with than fixtures.
   gem 'factory_bot'
+  # Simple, efficient background processing for Ruby.
+  gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+  # Shim to load environment variables from .env into ENV in development.
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -84,3 +88,5 @@ gem 'devise_token_auth'
 gem 'wor-paginate'
 # ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
 gem 'active_model_serializers', '~> 0.10.7'
+# Mailgun is a developer tool and API for sending transactional emails.
+gem 'mailgun', '~> 0.11'

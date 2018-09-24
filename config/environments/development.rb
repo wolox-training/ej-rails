@@ -63,4 +63,14 @@ Rails.application.configure do
 
   # Default URL options for the Devise mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    authentication: :plain,
+    address: Rails.application.secrets.mailer_address,
+    port: 587,
+    domain: Rails.application.secrets.mailer_domain,
+    user_name: Rails.application.secrets.mailer_user_name,
+    password: Rails.application.secrets.mailer_password
+  }
 end

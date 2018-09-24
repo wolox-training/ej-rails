@@ -1,0 +1,28 @@
+<p>Hi, <%= @rent.user.first_name %> </p>
+<p>
+  You have made a rent for a book on  <%= @rent.created_at %>. See the details below:
+</p>
+<p><b>From:</b> <%= @rent.loan %>. <b>To:</b> <%= @rent.restitution %></p>
+<h4>Book Details: </h4><br/>
+<table>
+  <tr style="padding:15px">
+    <td style="border-bottom: 1px solid;padding:15px"><b>Title</b></td>
+    <td style="border-bottom: 1px solid;padding:15px"><%= @rent.book.title %></td>
+  </tr>
+  <tr>
+    <td style="border-bottom: 1px solid;padding:15px"><b>Author</b></td>
+    <td style="border-bottom: 1px solid;padding:15px"><%= @rent.book.author %></td>
+  </tr>
+  <tr>
+    <td style="border-bottom: 1px solid;padding:15px"><b>Genre</b></td> 
+    <td style="border-bottom: 1px solid;padding:15px"><%= @rent.book.genre %></td>
+  </tr>
+  <tr>
+    <td style="border-bottom: 1px solid;padding:15px"><b>Publisher</b></td> 
+    <td style="border-bottom: 1px solid;padding:15px"><%= @rent.book.publisher %></td>
+  </tr>
+  <tr>
+    <td style="border-bottom: 1px solid;padding:15px"><b>Year</b></td> 
+    <td style="border-bottom: 1px solid;padding:15px"><%= @rent.book.year %></td>
+  </tr>
+</table>

@@ -28,3 +28,6 @@
 
 # Ignore tests
 /test/*
+
+# Ignore env variables
+.env
