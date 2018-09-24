@@ -1,9 +1,9 @@
-<p>Hi, <%= @rent.user.first_name %> </p>
+<p><%= t('.greeting', first_name: @rent.user.first_name) %></p>
 <p>
-  You have made a rent for a book on  <%= @rent.created_at %>. See the details below:
+  <%= t('.content', rent_date: @rent.created_at) %>
 </p>
-<p><b>From:</b> <%= @rent.loan %>. <b>To:</b> <%= @rent.restitution %></p>
-<h4>Book Details: </h4><br/>
+<p><%= t('.date_detail', from: @rent.loan, to: @rent.restitution) %></p>
+<h4><%= t('.book_detail') %></h4><br/>
 <table>
   <tr style="padding:15px">
     <td style="border-bottom: 1px solid;padding:15px"><b>Title</b></td>

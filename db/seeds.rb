@@ -26,7 +26,8 @@ user = User.create!(
   password: 'password',
   password_confirmation: 'password',
   first_name: 'Test',
-  last_name: 'Test'
+  last_name: 'Test',
+  locale: 'en'
 )
 
 books = Book.all

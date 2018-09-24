@@ -1,0 +1,8 @@
+es:
+  rent_mailer:
+    new_rent_notification:
+      subject: '¡Has rentado un libro!'
+      greeting: 'Hola, %{first_name}'
+      content: 'Has realizado una reservación el día %{rent_date}. Ve los detalles a continuación:'
+      date_detail: 'Desde: %{from}, hasta: %{to}'
+      book_detail: 'Detalles de tu libro:'

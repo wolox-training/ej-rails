@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  rent_mailer:
+    new_rent_notification:
+      subject: 'You have rented a book!'
+      greeting: 'Hi, %{first_name}'
+      content: 'You have made a rent for a book on %{rent_date}. See the details below:'
+      date_detail: 'From: %{from}, to: %{to}'
+      book_detail: 'Book details:'
