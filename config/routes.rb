@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  get '/book_suggestions', to: 'book_suggestions#create'
+  post '/book_suggestions', to: 'book_suggestions#create'
 
   resources :books, only: %i[index show] do
     resources :rents, only: %i[index]
