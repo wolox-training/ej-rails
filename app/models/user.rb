@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :rents, dependent: :nullify
   has_many :books, through: :rents
+  has_many :book_suggestions
 
   validates :first_name, :last_name, presence: true
 end
