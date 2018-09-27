@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  get 'books/find_by/:isbn', to: 'books#find_by_isbn'
+  get '/books/find_by/:isbn', to: 'books#find_by_isbn'
   get '/book_suggestions', to: 'book_suggestions#create'
 
   resources :books, only: %i[index show] do
@@ -16,5 +16,4 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show create] do
     resources :rents, only: %i[index create]
   end
-
 end
