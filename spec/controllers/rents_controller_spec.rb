@@ -7,7 +7,6 @@ RSpec.describe RentsController do
 
   describe 'GET #create' do
     context 'When creating a rent for an user' do
-      let(:user) { create(:user) }
       let(:book) { create(:book) }
       let(:rent) { attributes_for(:rent, book_id: book.id) }
       before do
@@ -36,7 +35,6 @@ RSpec.describe RentsController do
     end
 
     context 'When there is a missing param' do
-      let(:user) { create(:user) }
       context 'When the book_id is missing' do
         let(:rent) { attributes_for(:rent) }
         before do
@@ -72,6 +70,19 @@ RSpec.describe RentsController do
         end
       end
     end
+
+    context 'When unauthorized user' do
+      let(:book)      { create(:book) }
+      let(:new_user)  { create(:user) }
+      let(:rent)      { attributes_for(:rent, book_id: book.id) }
+      before do
+        post :create, params: { user_id: new_user.id, rent: rent }
+      end
+
+      it 'returns http status created' do
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
   end
 
   describe 'GET #index' do
@@ -80,7 +91,8 @@ RSpec.describe RentsController do
       let!(:rents) do
         today = Time.zone.today
         (1..5).map do |num|
-          create(:rent, book_id: book.id, loan: today + num.day, restitution: today + num.day)
+          create(:rent, book_id: book.id, loan: today + num.day, restitution: today + num.day,
+                        user: user)
         end
       end
       before do
@@ -99,17 +111,15 @@ RSpec.describe RentsController do
       end
 
       it 'responds with all the rents' do
-        expected = rents.count
-        expect(response_body['page'].length).to eq expected
+        expect(response_body['page'].length).to eq rents.count
       end
     end
 
     context 'When fetching all the rents of an user' do
-      let(:user) { create(:user) }
       let!(:rents) do
         today = Time.zone.today
         (1..5).map do |num|
-          create(:rent, user_id: user.id, loan: today + num.day, restitution: today + num.day)
+          create(:rent, user: user, loan: today + num.day, restitution: today + num.day)
         end
       end
       before do
@@ -138,7 +148,8 @@ RSpec.describe RentsController do
       let!(:rents) do
         today = Time.zone.today
         (1..5).map do |num|
-          create(:rent, book_id: book.id, loan: today + num.day, restitution: today + num.day)
+          create(:rent, book: book, loan: today + num.day, restitution: today + num.day,
+                        user: user)
         end
       end
 

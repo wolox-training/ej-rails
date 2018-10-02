@@ -23,6 +23,7 @@ module WbooksApi
     # if a locale isn't found fall back to this default locale
     config.i18n.fallbacks = true
     # set the possible locales to English, Portuguese and Spanish
-    config.i18n.available_locales = [:en, :pt, :es] 
+    config.i18n.available_locales = [:en, :pt, :es]
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
   end
 end

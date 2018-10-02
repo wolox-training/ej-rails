@@ -30,6 +30,15 @@ user = User.create!(
   locale: 'en'
 )
 
+user2 = User.create!(
+  email: 'test2@mail.com',
+  password: 'password',
+  password_confirmation: 'password',
+  first_name: 'Test 2',
+  last_name: 'Test 2',
+  locale: 'es'
+)
+
 books = Book.all
 
 books.each do |book|
@@ -38,4 +47,15 @@ books.each do |book|
     loan: Faker::Date.backward(15),
     restitution: Faker::Date.forward(15)
   )
+
+  book.rents.create!(
+    user: user2,
+    loan: Faker::Date.between(Time.zone.today + 25.days,
+      Time.zone.today + 35.days),
+    restitution: Faker::Date.between(Time.zone.today + 35.days,
+      Time.zone.today + 45.days)
+  )
 end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin2@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

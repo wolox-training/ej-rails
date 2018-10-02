@@ -37,6 +37,27 @@ gem 'redis'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+# Consuming restful web services
+gem 'httparty', '~> 0.13.7'
+
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+# A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+# Simple, multi-client and secure token-based authentication for Rails.
+gem 'devise_token_auth'
+# Wor::Paginate is a gem for Rails that simplifies pagination, particularly for controller methods, while standardizing JSON output for APIs.
+gem 'wor-paginate'
+# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
+gem 'active_model_serializers', '~> 0.10.7'
+# Activeadmin is a plugin for generating administration style interfaces. 
+gem 'activeadmin'
+# Mailgun is a developer tool and API for sending transactional emails.
+gem 'mailgun', '~> 0.11'
+# Pundit provides a set of helpers which guide you in leveraging regular Ruby classes and object oriented design patterns to build a simple,
+# robust and scaleable authorization system.
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -77,16 +98,3 @@ group :test do
   # These tests would otherwise be much longer, more complex, and error-prone.
   gem 'shoulda-matchers', '~> 3.0', require: false
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-# A generalized Rack framework for multiple-provider authentication.
-gem 'omniauth', '~> 1.8', '>= 1.8.1'
-# Simple, multi-client and secure token-based authentication for Rails.
-gem 'devise_token_auth'
-# Wor::Paginate is a gem for Rails that simplifies pagination, particularly for controller methods, while standardizing JSON output for APIs.
-gem 'wor-paginate'
-# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
-gem 'active_model_serializers', '~> 0.10.7'
-# Mailgun is a developer tool and API for sending transactional emails.
-gem 'mailgun', '~> 0.11'

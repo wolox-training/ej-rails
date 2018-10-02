@@ -37,3 +37,8 @@ en:
       content: 'You have made a rent for a book on %{rent_date}. See the details below:'
       date_detail: 'From: %{from}, to: %{to}'
       book_detail: 'Book details:'
+  pundit:
+    default: 'You cannot perform this action.'
+    rent_policy:
+      update?: 'You cannot edit this rent!'
+      create?: 'You cannot create a rent for another user!'
