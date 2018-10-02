@@ -37,6 +37,8 @@ gem 'redis'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+# Consuming restful web services
+gem 'httparty', '~> 0.13.7'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
