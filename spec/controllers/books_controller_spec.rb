@@ -51,7 +51,7 @@ RSpec.describe BooksController do
 
   describe 'GET #show' do
     context 'When given a correct ID' do
-      let!(:book) { create(:book) }
+      let(:book) { create(:book) }
       before do
         get :show, params: { id: book.id }
       end
